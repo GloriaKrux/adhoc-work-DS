@@ -14,10 +14,6 @@ As I was not sure how to approach thi question, so I started from basics hoping 
 
 ```python
 '''
-Question 1a) Assume p=P(x=1) 
-so p= 0 P(x=0) = 1 = 1-p This is based on the observation we have had so far.
-so P(x_n+1 = 1) =0
-
 Using Python 3.
 
 Question 1b) below
