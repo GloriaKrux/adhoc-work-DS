@@ -10,7 +10,82 @@ As I was not sure how to approach thi question, so I started from basics hoping 
 3. Estimate alpha and beta
     * There are few methods to do so, but I am taking the Maximum Likelihood approach. Turns out that one is rather complex.
     
+##Question 1b
 
+```python
+'''
+Question 1a) Assume p=P(x=1) 
+so p= 0 P(x=0) = 1 = 1-p This is based on the observation we have had so far.
+so P(x_n+1 = 1) =0
+
+Using Python 3.
+
+Question 1b) below
+'''
+
+import random
+p1 = 0.923456
+p2 = 0.24767
+max_reward = 0
+count_p1 =0
+count_p2 =0
+p2_reward =0
+p1_reward =0
+previous_p2 = 0
+previous_p1 = 0
+continue_iteration_p1 = True
+continue_iteration_p2 = True
+
+
+def tossCoin(p: float) -> int:
+	return 1 if random.random() < p else 0
+
+
+def flip(n: int ) -> int:
+	global continue_iteration_p1, continue_iteration_p2, count_p2, count_p1, p2_reward,p1_reward, previous_p2, previous_p1, max_reward
+	
+	while(n>0):
+		if n%2 == 0:
+			if continue_iteration_p2:
+				count_p2 +=1
+				temp = tossCoin(p2)
+				p2_reward += temp
+				max_reward += temp
+				if count_p2%100 ==0 and round(previous_p2,3) == round((p2_reward/count_p2),3):
+						continue_iteration_p2 = False
+				else:
+					previous_p2 = p2_reward/count_p2
+
+		elif continue_iteration_p1:
+			count_p1 +=1
+			temp = tossCoin(p1)
+			p1_reward +=  temp
+			max_reward += temp
+			if count_p1%100 ==0 and round(previous_p1,3) == round((p1_reward/count_p1),3):
+					continue_iteration_p1 = False
+			else:
+					previous_p2 = p2_reward/count_p2
+
+		elif estimated_p1 >= extimated_p2:
+			max_reward += tossCoin(p1)
+		else:
+			max_reward += tossCoin(p2)
+		n-=1
+	return max_reward
+	
+ if __name__ == '__main__':
+ 	main()
+# assuming number of times we flip a coin is very large
+# switch between p1 and p2 
+# add max_reward and the ones of p1 an p2 seperately
+# work out p1 and p2 iteratively - keep it simple.  p = total(heads)/total(trial for p)
+# do such until p1 and p2 converge - our convergence is 3dp. estimate p every 100 trials
+# once converge then stop and choose highest probability between p1 and p2 and use that for the remaining of trials
+
+# there is an infinite loop somewhere when p1 and p2 are randomly chosen. Need to check that.
+# there is certainly a better approach than the one I have stated above. But this si the first one I camme up with.
+#there is also a better way to write the code above...
+```
 
 ## Question 2
 ```sql
