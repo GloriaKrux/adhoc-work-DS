@@ -3,20 +3,37 @@
 As I was not sure how to approach this question, so I started from basics hoping I get somewhere and have an answer. Here are my thought process steps by step:
 
 1. Bernoulli Dsitribution 
-    * Parameters - p
+    * Parameters - p https://en.wikipedia.org/wiki/Bernoulli_distribution#Properties_of_the_Bernoulli_Distribution
+    * Using Maximum a Posteriori (MAP) approach to estimate the parameter p. I will need to use estimate the parameters of the Beta Distribtuion
+    * Not using the Maximum Likelihood approach as this is just the mean for the Bernoulli distribution and tha would give me 0.
 2. Beta Distribution
     * Conjugate of Bernoulli distribtuion, so it can be used to represent the probabilities over the parameters of the Bernoulli distribution.
-    * Parameter - alpha and beta all positive.
-3. Estimate alpha and beta
+    * Parameters - alpha and beta (both positive)
+3a. Estimate alpha and beta
     * There are few methods to do so, but I am taking the Maximum Likelihood approach. That is still relatively complex - reading reference here: https://en.wikipedia.org/wiki/Beta_distribution#Two_unknown_parameters_2
+    *(To think more on this...)*
 
-*(To think more on this...)*
+3b.  I can also make this easier for me and assume that the beta distribution is uniform so alpha = 1 and beta = 1. (TYhe question now is when is it correct to assume that the beta distribution is uniform?)
+
+3c. So using MAP approach and assuming alpha=beta=1, then I have 
+optimal_p = P(x_1..n|p)P(p)
+optimal_p = sum( log(Bern_x_i(p)) + log(Beta_p(alph, beta))) (skipping a few steps here )
+Taking the partial derivative and equate to 0
+optimal_p = (sum(x_i) + alpha -1 / sum(x_i) + beta + alpha -2).
+
+For this problem
+optimal_p = P(x=1) = 0
+
+Perhaps If I do estimate the paarmeters of the Beta distribution I will get something else.
+
+
 
 ## Question 1b
 
 ```python
 '''
 Using Python 3.
+Using the Maximum likelihood approach to find p - which is just the sample mean.
 
 Question 1b) below
 '''
