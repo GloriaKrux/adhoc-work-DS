@@ -10,7 +10,7 @@ As I was not sure how to approach thi question, so I started from basics hoping 
 3. Estimate alpha and beta
     * There are few methods to do so, but I am taking the Maximum Likelihood approach. Turns out that one is rather complex.
     
-##Question 1b
+## Question 1b
 
 ```python
 '''
