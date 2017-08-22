@@ -8,8 +8,10 @@ As I was not sure how to approach thi question, so I started from basics hoping 
     * Conjugate of Bernoulli distribtuion, so it can be used to represent the probabilities over the parameters of the Bernoulli distribution.
     * Parameter - alpha and beta all positive.
 3. Estimate alpha and beta
-    * There are few methods to do so, but I am taking the Maximum Likelihood approach. Turns out that one is rather complex.
-    
+    * There are few methods to do so, but I am taking the Maximum Likelihood approach. That is still relatively complex - reading reference here: https://en.wikipedia.org/wiki/Beta_distribution#Two_unknown_parameters_2
+
+
+
 ## Question 1b
 
 ```python
@@ -177,10 +179,39 @@ val a_2 = Seq(
   ("d", 4)).toDF("clientID_1", "recordID")
 
 a_2.show()
+//a_2: org.apache.spark.sql.DataFrame = [clientID_1: string, recordID: int]
+/* 
++----------+--------+
+|clientID_1|recordID|
++----------+--------+
+|         a|       1|
+|         a|       2|
+|         a|       3|
 
+|         b|       2|
+|         b|       4|
+|         c|       1|
+|         c|       3|
+|         d|       1|
+|         d|       2|
+|         d|       3|
+|         d|       4|
++----------+--------+ */
 a_2.map()
 val a_3 = a_2.groupBy($"recordID").agg(concat_ws(",", collect_list($"clientID_1")).alias("clientID"))
 a_3.show()
+
+//a_3: org.apache.spark.sql.DataFrame = [recordID: int, clientID: string]
+/*
++--------+--------+
+|recordID|clientID|
+
++--------+--------+
+|       1|   a,c,d|
+|       3|   a,c,d|
+|       4|     b,d|
+|       2|   a,b,d|
++--------+--------+ */
 
 val a_3_2 = a_2.groupBy($"recordID").agg(concat_ws(",", collect_list($"clientID_1")).alias("clientID"))
 
