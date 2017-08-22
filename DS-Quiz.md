@@ -9,8 +9,8 @@ As I was not sure how to approach this question, so I started from basics hoping
     * Parameter - alpha and beta all positive.
 3. Estimate alpha and beta
     * There are few methods to do so, but I am taking the Maximum Likelihood approach. That is still relatively complex - reading reference here: https://en.wikipedia.org/wiki/Beta_distribution#Two_unknown_parameters_2
-    But in summary this is what is happening:
-    	- Take partial derivative of the log likehood of the beta function wrt to the shape parameter and setting those to equal to 0.
+
+*(To think more on this...)*
 
 ## Question 1b
 
