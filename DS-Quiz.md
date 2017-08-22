@@ -5,7 +5,7 @@ As I was not sure how to approach this question, so I started from basics hoping
 1. Bernoulli Dsitribution 
     * Parameters - p https://en.wikipedia.org/wiki/Bernoulli_distribution#Properties_of_the_Bernoulli_Distribution
     * Using Maximum a Posteriori (MAP) approach to estimate the parameter p. I will need to use estimate the parameters of the Beta Distribtuion
-    * Not using the Maximum Likelihood approach as this is just the mean for the Bernoulli distribution and tha would give me 0.
+    * Not using the Maximum Likelihood approach as this is just the mean for the Bernoulli distribution and that would give me 0.
 2. Beta Distribution
     * Conjugate of Bernoulli distribtuion, so it can be used to represent the probabilities over the parameters of the Bernoulli distribution.
     * Parameters - alpha and beta (both positive)
