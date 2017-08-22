@@ -16,7 +16,7 @@ As I was not sure how to approach this question, so I started from basics hoping
 4. I can also make this easier for me and assume that the beta distribution is uniform so alpha = 1 and beta = 1. (The question now is: when is it correct to assume that the beta distribution is uniform?)
 
 5. So using MAP approach and assuming alpha=beta=1, then I have<br /> 
-optimal_p = P(x_1..n|p)P(p)<br />
+optimal_p = argmax(P(x_1..n|p)P(p))<br />
 optimal_p = sum( log(Bern_x_i(p)) + log(Beta_p(alph, beta))) (skipping a few steps here )<br />
 Taking the partial derivative and equate to 0<br />
 optimal_p = (sum(x_i) + alpha -1 / sum(x_i) + beta + alpha - 2)<br />
