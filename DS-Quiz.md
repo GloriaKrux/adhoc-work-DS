@@ -182,6 +182,7 @@ a_2.map()
 val a_3 = a_2.groupBy($"recordID").agg(concat_ws(",", collect_list($"clientID_1")).alias("clientID"))
 a_3.show()
 
+val a_3_2 = a_2.groupBy($"recordID").agg(concat_ws(",", collect_list($"clientID_1")).alias("clientID"))
 
 val a_6 = a_2.join(a_3_2, a_2.col("clientID") != a_3_2.col("clientID"))
 a_6.show()
