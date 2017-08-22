@@ -1,6 +1,6 @@
 ## Question 1a
 
-As I was not sure how to approach thi question, so I started from basics hoping I get somewhere and have an answer. Here are my thought process steps by step:
+As I was not sure how to approach this question, so I started from basics hoping I get somewhere and have an answer. Here are my thought process steps by step:
 
 1. Bernoulli Dsitribution 
     * Parameters - p
@@ -9,8 +9,8 @@ As I was not sure how to approach thi question, so I started from basics hoping 
     * Parameter - alpha and beta all positive.
 3. Estimate alpha and beta
     * There are few methods to do so, but I am taking the Maximum Likelihood approach. That is still relatively complex - reading reference here: https://en.wikipedia.org/wiki/Beta_distribution#Two_unknown_parameters_2
-
-
+    But in summary this is what is happening:
+    	- Take partial derivative of the log likehood of the beta function wrt to the shape parameter and setting those to equal to 0.
 
 ## Question 1b
 
@@ -72,7 +72,7 @@ def flip(n: int ) -> int:
 	return max_reward
 	
  if __name__ == '__main__':
- 	main()
+ 	print(flip(10000))
 # assuming number of times we flip a coin is very large
 # switch between p1 and p2 
 # add max_reward and the ones of p1 an p2 seperately
